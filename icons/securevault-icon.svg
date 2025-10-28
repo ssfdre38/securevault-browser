@@ -1,0 +1,68 @@
+<svg width="256" height="256" xmlns="http://www.w3.org/2000/svg">
+  <!-- SecureVault Browser Icon - Shield with Vault Lock -->
+  
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d47a1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196f3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565c0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lockGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffa000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer circle background -->
+  <circle cx="128" cy="128" r="120" fill="url(#bgGradient)"/>
+  
+  <!-- Shield shape -->
+  <path d="M 128 40 L 180 60 L 180 120 Q 180 180 128 210 Q 76 180 76 120 L 76 60 Z" 
+        fill="url(#shieldGradient)" 
+        stroke="#1976d2" 
+        stroke-width="3"/>
+  
+  <!-- Vault lock body -->
+  <rect x="105" y="125" width="46" height="50" rx="5" 
+        fill="url(#lockGradient)" 
+        stroke="#f57f17" 
+        stroke-width="2"/>
+  
+  <!-- Lock shackle -->
+  <path d="M 113 125 L 113 105 Q 113 90 128 90 Q 143 90 143 105 L 143 125" 
+        fill="none" 
+        stroke="url(#lockGradient)" 
+        stroke-width="7" 
+        stroke-linecap="round"/>
+  
+  <!-- Keyhole -->
+  <circle cx="128" cy="142" r="6" fill="#1a237e"/>
+  <rect x="125" y="142" width="6" height="18" rx="2" fill="#1a237e"/>
+  
+  <!-- Shine effect -->
+  <circle cx="128" cy="128" r="120" fill="url(#shine)" opacity="0.2"/>
+  <defs>
+    <radialGradient id="shine">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.5" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Security checkmarks -->
+  <path d="M 90 170 L 95 175 L 105 165" 
+        stroke="#4caf50" 
+        stroke-width="3" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  <path d="M 151 170 L 156 175 L 166 165" 
+        stroke="#4caf50" 
+        stroke-width="3" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+</svg>

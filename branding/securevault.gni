@@ -1,0 +1,30 @@
+# SecureVault Browser Branding Configuration
+
+securevault_product_name = "SecureVault Browser"
+securevault_project_name = "SecureVault"
+securevault_version_major = "1"
+securevault_version_minor = "0"
+securevault_version_build = "0"
+securevault_version_patch = "1"
+
+# Company information
+securevault_company_name = "SecureVault Project"
+securevault_company_short_name = "SecureVault"
+securevault_copyright = "Copyright 2024 SecureVault Project. All rights reserved."
+
+# URLs
+securevault_homepage = "about:blank"
+securevault_help_url = "https://securevault.local/help"
+securevault_privacy_url = "https://securevault.local/privacy"
+
+# Features
+securevault_enable_google_services = false
+securevault_enable_sync = false
+securevault_enable_translate = false
+securevault_enable_reporting = false
+
+# Default settings
+securevault_default_search_engine = "DuckDuckGo"
+securevault_dns_over_https = true
+securevault_block_third_party_cookies = true
+securevault_enable_site_isolation = true

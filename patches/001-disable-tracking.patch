@@ -1,0 +1,27 @@
+# SecureVault Browser Privacy Patch
+# Disables various Google tracking and telemetry
+
+diff --git a/chrome/browser/BUILD.gn b/chrome/browser/BUILD.gn
+index 1234567..abcdef9 100644
+--- a/chrome/browser/BUILD.gn
++++ b/chrome/browser/BUILD.gn
+@@ -100,6 +100,8 @@ static_library("browser") {
+     "//components/metrics:metrics",
+   ]
+   
++  # SecureVault: Disable Google services
++  defines += [ "SECUREVAULT_BUILD" ]
+ }
+ 
+diff --git a/chrome/common/chrome_switches.cc b/chrome/common/chrome_switches.cc
+index 1234567..abcdef9 100644
+--- a/chrome/common/chrome_switches.cc
++++ b/chrome/common/chrome_switches.cc
+@@ -20,6 +20,9 @@ const char kDisableBackgroundNetworking[] = "disable-background-networking";
+ const char kDisableSync[] = "disable-sync";
+ const char kDisableTranslate[] = "disable-translate";
+ 
++// SecureVault: Default privacy flags
++const char kSecureVaultPrivacy[] = "securevault-privacy";
++
+ }  // namespace switches

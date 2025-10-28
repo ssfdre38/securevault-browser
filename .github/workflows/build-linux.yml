@@ -1,0 +1,142 @@
+name: Build SecureVault Browser - Linux
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Free up disk space
+      run: |
+        sudo rm -rf /usr/share/dotnet
+        sudo rm -rf /opt/ghc
+        sudo rm -rf "/usr/local/share/boost"
+        sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        sudo apt-get clean
+        df -h
+        
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          git curl python3 python3-pip lsb-release \
+          build-essential gperf bison flex ninja-build \
+          pkg-config libnss3-dev libglib2.0-dev libgtk-3-dev \
+          libdbus-1-dev libatk1.0-dev libatk-bridge2.0-dev \
+          libcups2-dev libdrm-dev libxkbcommon-dev \
+          libxcomposite-dev libxdamage-dev libxrandr-dev \
+          libgbm-dev libpam0g-dev libpango1.0-dev \
+          libpci-dev libpulse-dev libasound2-dev
+          
+    - name: Install depot_tools
+      run: |
+        git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+        echo "$PWD/depot_tools" >> $GITHUB_PATH
+        
+    - name: Configure gclient
+      run: |
+        cat > .gclient << 'EOF'
+        solutions = [
+          {
+            "name": "src",
+            "url": "https://chromium.googlesource.com/chromium/src.git",
+            "managed": False,
+            "custom_deps": {},
+            "custom_vars": {},
+          },
+        ]
+        target_os = ["linux"]
+        EOF
+        
+    - name: Fetch Chromium source
+      run: |
+        export PATH="$PWD/depot_tools:$PATH"
+        fetch --nohooks --no-history chromium
+        cd src
+        git checkout -b securevault origin/main
+        
+    - name: Run gclient sync
+      run: |
+        export PATH="$PWD/depot_tools:$PATH"
+        cd src
+        gclient sync --no-history --shallow
+        
+    - name: Install build dependencies
+      run: |
+        cd src
+        sudo ./build/install-build-deps.sh --no-prompt --no-chromeos-fonts
+        
+    - name: Apply SecureVault patches
+      run: |
+        cd src
+        for patch in ../patches/*.patch; do
+          if [ -f "$patch" ]; then
+            git apply "$patch" || echo "Patch already applied: $patch"
+          fi
+        done
+        
+    - name: Configure build
+      run: |
+        export PATH="$PWD/depot_tools:$PATH"
+        cd src
+        mkdir -p out/SecureVault
+        cat > out/SecureVault/args.gn << 'EOF'
+        is_debug = false
+        is_official_build = true
+        is_component_build = false
+        symbol_level = 0
+        chrome_pgo_phase = 0
+        is_chrome_branded = false
+        google_api_key = ""
+        google_default_client_id = ""
+        google_default_client_secret = ""
+        enable_google_now = false
+        enable_hangout_services_extension = false
+        enable_remoting = false
+        enable_nacl = false
+        enable_crash_reporter = false
+        enable_error_dialogs = false
+        enable_mdns = false
+        enable_service_discovery = false
+        enable_wifi_bootstrapping = false
+        enable_one_click_signin = false
+        safe_browsing_mode = 0
+        use_cups = true
+        use_kerberos = false
+        proprietary_codecs = true
+        ffmpeg_branding = "Chrome"
+        target_cpu = "x64"
+        fieldtrial_testing_like_official_build = true
+        enable_reporting = false
+        enable_js_protobuf = false
+        use_thin_lto = true
+        thin_lto_enable_optimizations = true
+        EOF
+        gn gen out/SecureVault
+        
+    - name: Build SecureVault Browser
+      run: |
+        export PATH="$PWD/depot_tools:$PATH"
+        cd src
+        ninja -C out/SecureVault chrome
+        
+    - name: Package Linux binary
+      run: |
+        cd src/out/SecureVault
+        tar -czf ../../../securevault-browser-linux-x64.tar.gz chrome *.pak *.so* locales/ resources/
+        
+    - name: Upload Linux artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: securevault-browser-linux-x64
+        path: securevault-browser-linux-x64.tar.gz
+        retention-days: 30

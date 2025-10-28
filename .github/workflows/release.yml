@@ -1,0 +1,111 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      
+    steps:
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.event.inputs.version || github.ref }}
+        release_name: SecureVault Browser ${{ github.event.inputs.version || github.ref }}
+        body: |
+          ## SecureVault Browser Release
+          
+          Privacy and security-focused browser based on Chromium.
+          
+          ### Downloads
+          - **Linux**: securevault-browser-linux-x64.tar.gz
+          - **Windows**: securevault-browser-windows-x64.zip
+          - **macOS**: securevault-browser-macos-x64.tar.gz
+          
+          ### Privacy Features
+          - ✅ Zero telemetry and tracking
+          - ✅ DNS-over-HTTPS by default
+          - ✅ WebRTC IP leak protection
+          - ✅ Third-party cookie blocking
+          - ✅ No Google services
+          
+          ### Security Features
+          - ✅ Site isolation enabled
+          - ✅ Enhanced sandboxing
+          - ✅ HTTPS-only mode
+          - ✅ Memory safety features
+          
+          See [README.md](https://github.com/${{ github.repository }}/blob/main/README.md) for full documentation.
+        draft: false
+        prerelease: false
+
+  build-and-upload-linux:
+    needs: create-release
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    # ... (Linux build steps from build-linux.yml) ...
+    
+    - name: Upload Linux Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.create-release.outputs.upload_url }}
+        asset_path: ./securevault-browser-linux-x64.tar.gz
+        asset_name: securevault-browser-linux-x64.tar.gz
+        asset_content_type: application/gzip
+
+  build-and-upload-windows:
+    needs: create-release
+    runs-on: windows-2022
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    # ... (Windows build steps from build-windows.yml) ...
+    
+    - name: Upload Windows Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.create-release.outputs.upload_url }}
+        asset_path: ./securevault-browser-windows-x64.zip
+        asset_name: securevault-browser-windows-x64.zip
+        asset_content_type: application/zip
+
+  build-and-upload-macos:
+    needs: create-release
+    runs-on: macos-13
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    # ... (macOS build steps from build-macos.yml) ...
+    
+    - name: Upload macOS Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.create-release.outputs.upload_url }}
+        asset_path: ./securevault-browser-macos-x64.tar.gz
+        asset_name: securevault-browser-macos-x64.tar.gz
+        asset_content_type: application/gzip

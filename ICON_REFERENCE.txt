@@ -1,0 +1,61 @@
+╔══════════════════════════════════════════════════════════════╗
+║           SecureVault Browser Icon Reference                 ║
+╚══════════════════════════════════════════════════════════════╝
+
+Icon Design: Shield with Vault Lock
+Colors: Deep Blue (Primary), Gold (Accent), Green (Security)
+
+ASCII Art Representation:
+                    
+              ████████████              
+          ████░░░░░░░░░░░░████          
+        ██░░░░░░░░░░░░░░░░░░░░██        
+      ██░░░░░░░░░░░░░░░░░░░░░░░░██      
+    ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░██    
+    ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░██    
+    ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░██    
+    ██░░░░░░░░┌────────┐░░░░░░░░░░██    
+    ██░░░░░░░░│  LOCK  │░░░░░░░░░░██    Shield
+    ██░░░░░░░░│  🔒    │░░░░░░░░░░██    Shape
+    ██░░░░░░░░└────────┘░░░░░░░░░░██    
+    ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░██    
+      ██░░░░░░░░░░░░░░░░░░░░░░░░██      
+        ██░░░░░░░░░░░░░░░░░░░░██        
+          ████░░░░░░░░░░░░████          
+              ████████████              
+               ✓        ✓                Security
+                                        Checkmarks
+
+Legend:
+  ░ = Shield (Blue gradient: #2196f3 → #1565c0)
+  Lock = Vault lock (Gold: #ffc107 → #ffa000)
+  Background = Deep blue circle (#1a237e → #0d47a1)
+  ✓ = Security indicators (Green: #4caf50)
+
+Icon Files:
+  - securevault-icon.svg (256x256) - Full detail version
+  - securevault-icon-64.svg (64x64) - Simplified version
+
+To generate PNG versions:
+  ./generate-icons.sh
+
+This will create:
+  - PNG files: 16x16, 24x24, 32x32, 48x48, 64x64, 128x128, 256x256, 512x512
+  - ICO file for Windows (multi-size)
+  - ICNS file for macOS (multi-size)
+
+Design Concept:
+  - Shield represents protection and security
+  - Vault lock represents privacy and secured data
+  - Blue colors suggest trust and professionalism
+  - Gold lock suggests premium, valuable protection
+  - Green checkmarks indicate verified security
+
+Usage:
+  - Desktop launcher icon
+  - Browser tab icon (favicon)
+  - Window title bar icon
+  - About dialog
+  - Splash screen
+  - Package/installer icon
+

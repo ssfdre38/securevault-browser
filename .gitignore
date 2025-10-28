@@ -1,0 +1,70 @@
+# Chromium source directory (created during setup)
+src/
+
+# Depot tools (build tools)
+depot_tools/
+
+# Build output
+out/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# User data
+.config/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+build.log
+netlog.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Generated icons (keep SVG sources)
+icons/png/
+icons/*.ico
+icons/*.icns
+
+# gclient files
+.gclient
+.gclient_entries
+
+# Build artifacts
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Archives
+*.tar
+*.tar.gz
+*.tar.bz2
+*.zip
+*.rar
+
+# Node modules (if any)
+node_modules/
