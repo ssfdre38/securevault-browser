@@ -81,6 +81,12 @@ jobs:
         echo symbol_level = 0
         echo chrome_pgo_phase = 0
         echo is_chrome_branded = false
+        echo chrome_product_full_name = "SecureVault Browser"
+        echo chrome_product_name = "SecureVault"
+        echo chrome_copyright_owners = "Barrer Software"
+        echo chrome_company_name = "Barrer Software"
+        echo chrome_company_short_name = "Barrer Software"
+        echo chrome_company_url = "https://barrersoftware.com"
         echo google_api_key = ""
         echo google_default_client_id = ""
         echo google_default_client_secret = ""

@@ -117,8 +117,13 @@ Follows Chromium's BSD-style license. See LICENSE file for details.
 ## Credits
 
 Built on the Chromium open-source project.
-Privacy enhancements and security hardening by the SecureVault Browser team.
+Privacy enhancements and security hardening by Barrer Software.
+
+**Website**: https://barrersoftware.com
 
 ## Support
 
-For issues and questions, see the docs/ directory or open an issue on the project repository.
+For issues and questions:
+- Visit: https://barrersoftware.com/support
+- Documentation: See the docs/ directory
+- Privacy Policy: https://barrersoftware.com/privacy

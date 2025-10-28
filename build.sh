@@ -40,6 +40,14 @@ symbol_level = 0
 chrome_pgo_phase = 0
 is_chrome_branded = false
 
+# Custom branding for Barrer Software
+chrome_product_full_name = "SecureVault Browser"
+chrome_product_name = "SecureVault"
+chrome_copyright_owners = "Barrer Software"
+chrome_company_name = "Barrer Software"
+chrome_company_short_name = "Barrer Software"
+chrome_company_url = "https://barrersoftware.com"
+
 # Privacy: Disable Google services
 google_api_key = ""
 google_default_client_id = ""

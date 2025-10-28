@@ -8,14 +8,14 @@ securevault_version_build = "0"
 securevault_version_patch = "1"
 
 # Company information
-securevault_company_name = "SecureVault Project"
-securevault_company_short_name = "SecureVault"
-securevault_copyright = "Copyright 2024 SecureVault Project. All rights reserved."
+securevault_company_name = "Barrer Software"
+securevault_company_short_name = "Barrer Software"
+securevault_copyright = "Copyright 2025 Barrer Software. All rights reserved."
 
 # URLs
-securevault_homepage = "about:blank"
-securevault_help_url = "https://securevault.local/help"
-securevault_privacy_url = "https://securevault.local/privacy"
+securevault_homepage = "https://barrersoftware.com"
+securevault_help_url = "https://barrersoftware.com/help"
+securevault_privacy_url = "https://barrersoftware.com/privacy"
 
 # Features
 securevault_enable_google_services = false

@@ -1,0 +1,26 @@
+# SecureVault Browser Branding Patch for About Dialog
+# Updates company information and URLs in the about dialog
+
+diff --git a/chrome/browser/ui/views/about_chrome_view.cc b/chrome/browser/ui/views/about_chrome_view.cc
+index 1234567..abcdef9 100644
+--- a/chrome/browser/ui/views/about_chrome_view.cc
++++ b/chrome/browser/ui/views/about_chrome_view.cc
+@@ -100,8 +100,8 @@ void AboutChromeView::Init() {
+   
+   // Company and copyright information
+   auto* copyright_label = AddChildView(std::make_unique<views::Label>(
+-      u"Copyright © 2024 The Chromium Authors",
++      u"Copyright © 2025 Barrer Software. All rights reserved.",
+       views::style::CONTEXT_LABEL, views::style::STYLE_SECONDARY));
+   
++  // Company website
++  auto* website_label = AddChildView(std::make_unique<views::Label>(
++      u"https://barrersoftware.com",
++      views::style::CONTEXT_LABEL, views::style::STYLE_LINK));
++
+   // Product name
+   auto* product_label = AddChildView(std::make_unique<views::Label>(
+-      u"Chromium",
++      u"SecureVault Browser by Barrer Software",
+       views::style::CONTEXT_DIALOG_TITLE));
+ }

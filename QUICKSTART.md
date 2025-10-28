@@ -293,7 +293,9 @@ SecureVault Browser follows Chromium's BSD-style license. See Chromium source fo
 
 ## Credits
 
-Built on the Chromium open-source project. Enhanced with privacy and security features by the SecureVault Browser team.
+Built on the Chromium open-source project. Enhanced with privacy and security features by Barrer Software.
+
+**Website**: https://barrersoftware.com
 
 ## Disclaimer
 

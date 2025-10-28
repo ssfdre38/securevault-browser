@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SecureVault Browser Branded Strings -->
+<grit-part>
+  <!-- Product Name -->
+  <message name="IDS_PRODUCT_NAME" desc="The product name">
+    SecureVault Browser
+  </message>
+  
+  <message name="IDS_SHORT_PRODUCT_NAME" desc="The short product name">
+    SecureVault
+  </message>
+  
+  <!-- Company Information -->
+  <message name="IDS_ABOUT_VERSION_COMPANY_NAME" desc="Company name in about dialog">
+    Barrer Software
+  </message>
+  
+  <message name="IDS_ABOUT_VERSION_COPYRIGHT" desc="Copyright notice in about dialog">
+    Copyright © 2025 Barrer Software. All rights reserved.
+  </message>
+  
+  <!-- URLs -->
+  <message name="IDS_ABOUT_VERSION_COMPANY_URL" desc="Company website URL">
+    https://barrersoftware.com
+  </message>
+  
+  <message name="IDS_HELP_CENTER_URL" desc="Help center URL">
+    https://barrersoftware.com/help
+  </message>
+  
+  <message name="IDS_PRIVACY_POLICY_URL" desc="Privacy policy URL">
+    https://barrersoftware.com/privacy
+  </message>
+  
+  <message name="IDS_TERMS_OF_SERVICE_URL" desc="Terms of service URL">
+    https://barrersoftware.com/terms
+  </message>
+  
+  <!-- About Dialog -->
+  <message name="IDS_ABOUT_PRODUCT_DESCRIPTION" desc="Product description in about dialog">
+    SecureVault Browser is a privacy and security-focused web browser developed by Barrer Software. Built on Chromium with enhanced privacy protections and zero telemetry.
+  </message>
+  
+  <!-- Credits -->
+  <message name="IDS_ABOUT_VERSION_LICENSE" desc="License information">
+    SecureVault Browser is based on Chromium, an open-source project. Enhanced with privacy and security features by Barrer Software.
+  </message>
+</grit-part>
