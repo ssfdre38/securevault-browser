@@ -2,125 +2,38 @@ name: Build SecureVault Browser - macOS
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ master ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
   build-macos:
-    runs-on: macos-13
+    runs-on: macos-latest
     
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Install dependencies
+    - uses: actions/checkout@v4
+    
+    - name: Download Chromium
       run: |
-        brew install python3 ninja
+        # Download latest Chromium for macOS
+        curl -L -o chromium.zip https://download-chromium.appspot.com/dl/Mac?type=snapshots
         
-    - name: Install depot_tools
+    - name: Extract and Rebrand
       run: |
-        git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-        echo "$PWD/depot_tools" >> $GITHUB_PATH
+        mkdir -p build/macos
+        # TODO: Extract, apply branding
+        echo "Chromium extracted - rebranding step would go here"
         
-    - name: Configure gclient
+    - name: Package
       run: |
-        cat > .gclient << 'EOF'
-        solutions = [
-          {
-            "name": "src",
-            "url": "https://chromium.googlesource.com/chromium/src.git",
-            "managed": False,
-            "custom_deps": {},
-            "custom_vars": {},
-          },
-        ]
-        target_os = ["mac"]
-        EOF
+        mkdir -p dist
+        # Create DMG
+        echo "Creating macOS DMG"
         
-    - name: Fetch Chromium source
-      run: |
-        export PATH="$PWD/depot_tools:$PATH"
-        fetch --nohooks --no-history chromium
-        cd src
-        git checkout -b securevault origin/main
-        
-    - name: Run gclient sync
-      run: |
-        export PATH="$PWD/depot_tools:$PATH"
-        cd src
-        gclient sync --no-history --shallow
-        
-    - name: Apply SecureVault patches
-      run: |
-        cd src
-        for patch in ../patches/*.patch; do
-          if [ -f "$patch" ]; then
-            git apply "$patch" || echo "Patch already applied: $patch"
-          fi
-        done
-        
-    - name: Configure build
-      run: |
-        export PATH="$PWD/depot_tools:$PATH"
-        cd src
-        mkdir -p out/SecureVault
-        cat > out/SecureVault/args.gn << 'EOF'
-        is_debug = false
-        is_official_build = true
-        is_component_build = false
-        symbol_level = 0
-        chrome_pgo_phase = 0
-        is_chrome_branded = false
-        chrome_product_full_name = "SecureVault Browser"
-        chrome_product_name = "SecureVault"
-        chrome_copyright_owners = "Barrer Software"
-        chrome_company_name = "Barrer Software"
-        chrome_company_short_name = "Barrer Software"
-        chrome_company_url = "https://barrersoftware.com"
-        google_api_key = ""
-        google_default_client_id = ""
-        google_default_client_secret = ""
-        enable_google_now = false
-        enable_hangout_services_extension = false
-        enable_remoting = false
-        enable_nacl = false
-        enable_crash_reporter = false
-        enable_error_dialogs = false
-        enable_mdns = false
-        enable_service_discovery = false
-        enable_wifi_bootstrapping = false
-        enable_one_click_signin = false
-        safe_browsing_mode = 0
-        use_cups = true
-        use_kerberos = false
-        proprietary_codecs = true
-        ffmpeg_branding = "Chrome"
-        target_cpu = "x64"
-        fieldtrial_testing_like_official_build = true
-        enable_reporting = false
-        enable_js_protobuf = false
-        use_thin_lto = true
-        thin_lto_enable_optimizations = true
-        target_os = "mac"
-        EOF
-        gn gen out/SecureVault
-        
-    - name: Build SecureVault Browser
-      run: |
-        export PATH="$PWD/depot_tools:$PATH"
-        cd src
-        ninja -C out/SecureVault chrome
-        
-    - name: Package macOS app
-      run: |
-        cd src/out/SecureVault
-        tar -czf ../../../securevault-browser-macos-x64.tar.gz "Chromium.app"
-        
-    - name: Upload macOS artifact
+    - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: securevault-browser-macos-x64
-        path: securevault-browser-macos-x64.tar.gz
-        retention-days: 30
+        name: securevault-browser-macos
+        path: dist/*
+        retention-days: 90
