@@ -1,0 +1,22 @@
+#!/bin/bash
+# Verify SecureVault Browser download integrity
+
+echo "Verifying SecureVault-Browser-6.0.0-build20251028-linux-x64.tar.gz..."
+echo ""
+
+if sha256sum -c SecureVault-Browser-6.0.0-build20251028-linux-x64.tar.gz.sha256; then
+    echo "✓ SHA256 verification passed"
+else
+    echo "✗ SHA256 verification FAILED"
+    exit 1
+fi
+
+if sha512sum -c SecureVault-Browser-6.0.0-build20251028-linux-x64.tar.gz.sha512; then
+    echo "✓ SHA512 verification passed"
+else
+    echo "✗ SHA512 verification FAILED"
+    exit 1
+fi
+
+echo ""
+echo "✓ All verifications passed - download is authentic"
