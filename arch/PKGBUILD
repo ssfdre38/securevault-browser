@@ -1,0 +1,49 @@
+# Maintainer: Barrer Software <security@barrersoftware.com>
+pkgname=securevault-browser
+pkgver=6.0.0
+pkgrel=1
+pkgdesc="Privacy and security-focused web browser based on Ungoogled-Chromium"
+arch=('x86_64')
+url="https://barrersoftware.com"
+license=('BSD')
+depends=('gtk3' 'nss' 'libxss' 'ttf-font')
+optdepends=('libva: hardware video acceleration'
+            'pipewire: WebRTC desktop sharing')
+source=("https://github.com/ungoogled-software/ungoogled-chromium-portablelinux/releases/download/131.0.6778.69-1/ungoogled-chromium_131.0.6778.69-1_linux.tar.xz")
+sha256sums=('SKIP')
+
+package() {
+    # Install to /opt
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}"/ungoogled-chromium*/* "${pkgdir}/opt/${pkgname}/"
+    
+    # Create launcher script
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << 'LAUNCHER'
+#!/bin/bash
+exec /opt/securevault-browser/chrome \
+    --disable-background-networking \
+    --disable-sync \
+    --dns-over-https-mode=secure \
+    --dns-over-https-server=https://1.1.1.1/dns-query \
+    --enable-features=WebRTCHideLocalIpsWithMdns \
+    --https-only-mode \
+    --no-pings \
+    "$@"
+LAUNCHER
+    
+    # Desktop entry
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" << 'DESKTOP'
+[Desktop Entry]
+Version=1.0
+Name=SecureVault Browser
+GenericName=Secure Web Browser
+Comment=Privacy and security-focused web browser
+Exec=securevault-browser %U
+Terminal=false
+Type=Application
+Icon=securevault-browser
+Categories=Network;WebBrowser;Security;
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+DESKTOP
+}

@@ -22,7 +22,7 @@ cd "$WORK_DIR"
 
 # Download Ungoogled-Chromium for Windows
 echo "[*] Downloading Ungoogled-Chromium for Windows..."
-WIN_VERSION="131.0.6778.69-1"
+WIN_VERSION="141.0.7390.122-1.1"
 WIN_URL="https://github.com/ungoogled-software/ungoogled-chromium-windows/releases/download/${WIN_VERSION}/ungoogled-chromium_${WIN_VERSION}_windows_x64.zip"
 
 wget -q --show-progress "$WIN_URL" -O chromium-windows.zip
@@ -100,7 +100,7 @@ SUPPORT:
 ========
 Website: https://barrersoftware.com
 Email: security@barrersoftware.com
-GitHub: https://github.com/ssfdre38/securevault-browser
+GitHub: https://github.com/barrersoftware/securevault-browser
 
 SYSTEM REQUIREMENTS:
 ====================
@@ -257,7 +257,7 @@ cat > "$OUTPUT_DIR/SecureVault-Browser-Windows.html" << 'HTML'
     </ul>
     
     <p><a href="https://barrersoftware.com">https://barrersoftware.com</a> | 
-       <a href="https://github.com/ssfdre38/securevault-browser">GitHub</a></p>
+       <a href="https://github.com/barrersoftware/securevault-browser">GitHub</a></p>
 </body>
 </html>
 HTML

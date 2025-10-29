@@ -1,0 +1,5 @@
+[securevault-browser]
+name=SecureVault Browser Repository
+baseurl=https://repo.secureos.xyz/rpm/
+enabled=1
+gpgcheck=0

@@ -476,12 +476,12 @@ If a website doesn't work:
 
 SecureVault Browser is based on Ungoogled-Chromium.
 Update by downloading new releases from:
-https://github.com/ssfdre38/securevault-browser/releases
+https://github.com/barrersoftware/securevault-browser/releases
 
 ## Support
 
 For security concerns or questions:
-- GitHub: https://github.com/ssfdre38/securevault-browser
+- GitHub: https://github.com/barrersoftware/securevault-browser
 - Email: security@barrersoftware.com
 - Website: https://barrersoftware.com
 

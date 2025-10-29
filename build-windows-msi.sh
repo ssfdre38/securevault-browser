@@ -117,7 +117,7 @@ Features:
 - Enhanced sandboxing
 
 Support: security@barrersoftware.com
-GitHub: https://github.com/ssfdre38/securevault-browser
+GitHub: https://github.com/barrersoftware/securevault-browser
 README
 
 # Download WiX Toolset for MSI creation

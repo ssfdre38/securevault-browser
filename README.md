@@ -3,7 +3,7 @@
 **Privacy and security-focused web browser** based on Chromium with zero telemetry, DNS-over-HTTPS, WebRTC protection, and enhanced security features.
 
 [![License](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey)](https://github.com/ssfdre38/securevault-browser)
+[![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey)](https://github.com/barrersoftware/securevault-browser)
 
 **By Barrer Software** - https://barrersoftware.com
 
@@ -65,7 +65,7 @@ See [QUICKSTART.md](QUICKSTART.md) for development setup instructions.
 ### Linux
 ```bash
 # AppImage (Coming Soon)
-wget https://github.com/ssfdre38/securevault-browser/releases/latest/download/SecureVault-Browser.AppImage
+wget https://github.com/barrersoftware/securevault-browser/releases/latest/download/SecureVault-Browser.AppImage
 chmod +x SecureVault-Browser.AppImage
 ./SecureVault-Browser.AppImage
 ```
@@ -97,7 +97,7 @@ chmod +x SecureVault-Browser.AppImage
 ### Build Process
 ```bash
 # Clone the repository
-git clone https://github.com/ssfdre38/securevault-browser.git
+git clone https://github.com/barrersoftware/securevault-browser.git
 cd securevault-browser
 
 # See QUICKSTART.md for detailed instructions
@@ -193,7 +193,7 @@ Website: https://barrersoftware.com
 - **Website**: https://barrersoftware.com
 - **Email**: info@barrersoftware.com
 - **Support**: help@barrersoftware.com
-- **GitHub**: https://github.com/ssfdre38/securevault-browser
+- **GitHub**: https://github.com/barrersoftware/securevault-browser
 
 ---
 

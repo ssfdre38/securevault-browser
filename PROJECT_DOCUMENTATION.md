@@ -18,8 +18,8 @@ SecureVault Browser is a privacy and security-focused web browser based on Chrom
 ## 🌐 Online Presence
 
 - **Product Page:** https://barrersoftware.com/securevault
-- **GitHub Repository:** https://github.com/ssfdre38/securevault-browser
-- **Releases:** https://github.com/ssfdre38/securevault-browser/releases
+- **GitHub Repository:** https://github.com/barrersoftware/securevault-browser
+- **Releases:** https://github.com/barrersoftware/securevault-browser/releases
 - **Documentation:** See docs/ folder in repository
 
 ---
@@ -376,7 +376,7 @@ tail -f /mnt/projects/repos/securevault-browser/build.log
 **Debian/Ubuntu (.deb):**
 ```bash
 # Download package
-wget https://github.com/ssfdre38/securevault-browser/releases/latest/download/securevault-browser_amd64.deb
+wget https://github.com/barrersoftware/securevault-browser/releases/latest/download/securevault-browser_amd64.deb
 
 # Install
 sudo dpkg -i securevault-browser_amd64.deb
@@ -389,7 +389,7 @@ securevault-browser
 **Fedora/RHEL (.rpm):**
 ```bash
 # Download package
-wget https://github.com/ssfdre38/securevault-browser/releases/latest/download/securevault-browser.x86_64.rpm
+wget https://github.com/barrersoftware/securevault-browser/releases/latest/download/securevault-browser.x86_64.rpm
 
 # Install
 sudo dnf install securevault-browser.x86_64.rpm
@@ -401,7 +401,7 @@ securevault-browser
 **AppImage (Universal):**
 ```bash
 # Download
-wget https://github.com/ssfdre38/securevault-browser/releases/latest/download/SecureVault-Browser.AppImage
+wget https://github.com/barrersoftware/securevault-browser/releases/latest/download/SecureVault-Browser.AppImage
 
 # Make executable
 chmod +x SecureVault-Browser.AppImage
@@ -564,7 +564,7 @@ securevault-browser --enable-logging --v=1
 ## 📞 Support
 
 - **Email:** privacy@barrersoftware.com
-- **GitHub Issues:** https://github.com/ssfdre38/securevault-browser/issues
+- **GitHub Issues:** https://github.com/barrersoftware/securevault-browser/issues
 - **Website:** https://barrersoftware.com
 - **Documentation:** See docs/ folder
 
